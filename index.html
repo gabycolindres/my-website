@@ -11,9 +11,9 @@
   HOW TO EDIT
   1. BRAND:   colors live in the ":root" block below. Company name +
               logo are in the <header>. Search [EDIT].
-  2. FONTS:   uses Chango (Cubano stand-in) + Archivo (DIN stand-in).
-              If you license CUBANO + DIN, replace the font-family
-              values for --font-display / --font-body in :root.
+  2. FONTS:   uses Cubano (display) + Archivo (body).
+              If you license DIN, replace the font-family
+              value for --font-body in :root.
   3. CONTENT: every section is plain HTML — edit text, steps, scripts
               directly. Duplicate any block to add more.
   4. UPDATES: add a new entry at the TOP of the Updates section.
@@ -22,7 +22,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chango&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cubano&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 /* ===============  [EDIT] WYNWOOD BRAND TOKENS  =============== */
@@ -40,8 +40,8 @@
   --refund:   #F15F59;   /* Beef + Potato (coral)        */
   --credit:   #54BE90;   /* Venison + Squash (green)     */
 
-  --font-display:'Chango', system-ui, sans-serif;        /* swap for 'Cubano' if licensed */
-  --font-body:'Archivo', system-ui, sans-serif;          /* swap for 'DIN' if licensed     */
+  --font-display:'Cubano', system-ui, sans-serif;         /* Cubano display font */
+  --font-body:'Archivo', system-ui, sans-serif;           /* DIN stand-in        */
 
   --radius: 16px;
   --radius-sm: 10px;
@@ -151,14 +151,14 @@ a{color:inherit}
 .runbook li::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-family:var(--font-display);font-size:14px;color:var(--ink);flex:none;width:30px;padding-top:2px}
 .runbook .step-title{font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:.01em}
 .runbook .step-body{font-size:14px;color:#4f4b3d;margin-top:2px;font-weight:500}
-.tag{display:inline-block;font-family:var(--font-body);font-weight:700;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--cream2);border:1.5px solid var(--ink);color:var(--ink);margin-right:4px;white-space:nowrap;text-transform:uppercase;letter-spacing:.02em}
+.tag{display:inline-block;font-family:var(--font-body);font-weight:700;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--cream2);border:1.5px solid var(--ink);color:var(--ink);margin-right:4px}
 
 /* script card */
 .script{position:relative;border-radius:var(--radius-sm);padding:18px 20px;margin-top:14px;border:2px solid var(--ink);background:var(--cream)}
 .script .who{color:#7a7458;margin-bottom:8px}
 .script p{font-size:15px;color:var(--ink);line-height:1.62;font-weight:500;padding-right:62px}
 .script .ph{background:var(--yellow);border-radius:5px;padding:0 6px;font-weight:700}
-.copy{position:absolute;top:14px;right:14px;border:2px solid var(--ink);background:var(--card);border-radius:8px;padding:5px 11px;font-size:11.5px;font-family:var(--font-body);font-weight:700;color:var(--ink);cursor:pointer;transition:.14s;text-transform:uppercase;letter-spacing:.03em}
+.copy{position:absolute;top:14px;right:14px;border:2px solid var(--ink);background:var(--card);border-radius:8px;padding:5px 11px;font-size:11.5px;font-family:var(--font-body);font-weight:700;color:var(--ink);cursor:pointer;transition:.15s}
 .copy:hover{background:var(--yellow)}
 .copy.ok{background:var(--credit)}
 
@@ -174,7 +174,7 @@ a{color:inherit}
 .log .date{font-family:var(--font-body);font-size:12px;color:#8a835f;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
 .log h4{font-family:var(--font-body);font-weight:800;font-size:17px;margin:6px 0 6px;text-transform:uppercase;letter-spacing:.01em}
 .log p{font-size:14.5px;color:#4f4b3d;font-weight:500}
-.badge{display:inline-block;font-family:var(--font-body);font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:6px;margin-left:8px;vertical-align:middle;border:2px solid var(--ink)}
+.badge{display:inline-block;font-family:var(--font-body);font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:6px;margin-left:8px;vertical-align:middle}
 .badge.r{background:var(--reship)} .badge.f{background:var(--refund)} .badge.c{background:var(--credit)}
 
 footer{background:var(--ink);color:var(--cream);text-align:center;padding:30px 24px;font-size:13.5px;font-weight:500}
@@ -213,7 +213,7 @@ footer b{color:var(--yellow)}
     <!-- [EDIT] company name + logo -->
     <div class="brand">
       <span class="logo" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M5.2 8.6c-1.2 0-2.2 1-2.2 2.2 0 .66.29 1.25.75 1.65-.46.4-.75.99-.75 1.65 0 1.21 1 2.2 2.2 2.2 1 0 1.85-.67 2.12-1.58h7.36c.27.91 1.12 1.58 2.12 1.58 1.2 0 2.2-.99 2.2-2.2 0-.66-.29-1.25-.75-1.65.46-.4.75-.99.75-1.65 0-1.2-1-2.2-2.2-2.2-1 0-1.85.67-2.12 1.58H7.32C7.05 9.27 6.2 8.6 5.2 8.6z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M5.2 8.6c-1.2 0-2.2 1-2.2 2.2 0 .66.29 1.25.75 1.65-.46.4-.75.99-.75 1.65 0 1.21 1 2.2 2.2 2.2 1 0 1.85-.67 2.12-1.58h7.36c.27.91 1.12 1.58 2.12 1.58 1.2 0 2.2-1 2.2-2.2 0-.66-.29-1.25-.75-1.65.46-.4.75-.99.75-1.65 0-1.21-1-2.2-2.2-2.2-1 0-1.85.67-2.12 1.58H7.32c-.27-.91-1.12-1.58-2.12-1.58Z"></path></svg>
       </span>
       Wynwood Dog Food Co.
     </div>
@@ -252,7 +252,7 @@ footer b{color:var(--yellow)}
     <section class="hero reveal">
       <p class="eyebrow label">Customer Resolutions · Internal reference</p>
       <h1>The <span class="hl">Resolutions</span> Playbook</h1>
-      <p>Keeps every resolution consistent, fair, and unmistakably Wynwood. Use it to decide the right fix, run it correctly in Shopify, and say the right thing to the customer — so every agent handles the same situation the same way.</p>
+      <p>Keeps every resolution consistent, fair, and unmistakably Wynwood. Use it to decide the right fix, run it correctly in Shopify, and say the right thing to the customer — so every agent shows up with the same voice and judgment.</p>
     </section>
 
     <!-- POLICY AT A GLANCE -->
@@ -300,7 +300,7 @@ footer b{color:var(--yellow)}
         </a>
 
       </div>
-      <div class="note tip" style="margin-top:20px"><span class="i">Rule of thumb</span><span>Default to the resolution the customer asks for. When it's our error, lead with a reship or full refund — never make the customer chase us. Offer store credit as an <strong>upgrade</strong> (credit + a little extra), not a downgrade from a refund they're owed. <em>*Paid reships (e.g. customer's address error) need a lead.</em></span></div>
+      <div class="note tip" style="margin-top:20px"><span class="i">Rule of thumb</span><span>Default to the resolution the customer asks for. When it's our error, lead with a reship or full refund. When in doubt, ask your lead before committing to anything.</span></div>
     </section>
 
 
@@ -324,7 +324,7 @@ footer b{color:var(--yellow)}
           <div class="cat"><h4>Missing item</h4><p>Part of a multi-item order didn't arrive.</p></div>
           <div class="cat"><h4>Defective / quality</h4><p>Manufacturing fault confirmed by photo or description.</p></div>
         </div>
-        <div class="note warn" style="margin-top:18px"><span class="i">Don't reship if</span><span>Tracking shows <strong>delivered</strong> and it's within the wait window — follow the "marked delivered, not received" steps first. Address was entered wrong by the customer — that may be a paid reship, check with a lead.</span></div>
+        <div class="note warn" style="margin-top:18px"><span class="i">Don't reship if</span><span>Tracking shows <strong>delivered</strong> and it's within the wait window — follow the "marked delivered but not arrived" exception on the Refunds page instead.</span></div>
       </div>
 
       <div class="grid-2">
@@ -334,9 +334,9 @@ footer b{color:var(--yellow)}
           <ol class="runbook">
             <li><div><div class="step-title">Confirm the issue</div><div class="step-body">Check tracking + ask for a photo if damage/defect/wrong item. Save photos to the ticket.</div></div></li>
             <li><div><div class="step-title">Verify the shipping address</div><div class="step-body">Open the original order → confirm the address is correct before resending.</div></div></li>
-            <li><div><div class="step-title">Duplicate the order</div><div class="step-body"><span class="tag">More actions</span> → <span class="tag">Duplicate</span>. Remove anything not being replaced.</div></div></li>
+            <li><div><div class="step-title">Duplicate the order</div><div class="step-body"><span class="tag">More actions</span> → <span class="tag">Duplicate</span>. Remove anything not being reshipped (e.g. keep only the damaged item).</div></div></li>
             <li><div><div class="step-title">Set price to $0</div><div class="step-body">Mark as <span class="tag">Paid</span> outside Shopify or apply a 100% discount so the customer isn't charged.</div></div></li>
-            <li><div><div class="step-title">Tag &amp; note</div><div class="step-body">Add tag <span class="tag">reship</span> + reason tag (e.g. <span class="tag">damaged</span>). Note the original order # in the order notes.</div></div></li>
+            <li><div><div class="step-title">Tag &amp; note</div><div class="step-body">Add tag <span class="tag">reship</span> + reason tag (e.g. <span class="tag">damaged</span>). Note the original order # in the internal note.</div></div></li>
             <li><div><div class="step-title">Fulfill &amp; send tracking</div><div class="step-body">Fulfill the new order and share the new tracking link with the customer.</div></div></li>
           </ol>
         </div>
@@ -348,19 +348,19 @@ footer b{color:var(--yellow)}
           <div class="script">
             <button class="copy">Copy</button>
             <div class="who label">Damaged / defective</div>
-            <p>Oh no — that's not the experience we want for you or your pup. I've sent a replacement <span class="ph">[item]</span> out to you at no charge, no need to return the damaged one. Here's your new tracking: <span class="ph">[link]</span>. It should arrive by <span class="ph">[date]</span>.</p>
+            <p>Oh no — that's not the experience we want for you or your pup. I've sent a replacement <span class="ph">[item]</span> out to you at no charge, no need to return the damaged one. It'll arrive by <span class="ph">[date]</span>. Tracking: [link]</p>
           </div>
 
           <div class="script">
             <button class="copy">Copy</button>
             <div class="who label">Lost in transit</div>
-            <p>Thanks for your patience — looks like this one got stuck with the carrier. Rather than keep you waiting, I've shipped a fresh <span class="ph">[item]</span> out today at no cost. New tracking: <span class="ph">[link]</span>.</p>
+            <p>Thanks for your patience — looks like this one got stuck with the carrier. Rather than keep you waiting, I've shipped a fresh <span class="ph">[item]</span> out today at no cost. You should see it by <span class="ph">[date]</span>. Tracking: [link]</p>
           </div>
 
           <div class="script">
             <button class="copy">Copy</button>
             <div class="who label">Wrong / missing item</div>
-            <p>Apologies for the mix-up! You should've received <span class="ph">[item]</span>. I'm sending the correct one now at no charge — please keep what you received. Tracking: <span class="ph">[link]</span>.</p>
+            <p>Apologies for the mix-up! You should've received <span class="ph">[item]</span>. I'm sending the correct one now at no charge — please keep what you received. Tracking: <span class="ph">[link]</span> — delivery by <span class="ph">[date]</span>.</p>
           </div>
         </div>
       </div>
@@ -386,7 +386,7 @@ footer b{color:var(--yellow)}
           <div class="cat"><h4>Duplicate charge</h4><p>Customer charged twice for one order.</p></div>
           <div class="cat"><h4>Goodwill / partial</h4><p>Service failure where a partial refund is the fair fix.</p></div>
         </div>
-        <div class="note warn" style="margin-top:18px"><span class="i">Approval needed</span><span>Refunds over <strong>$[X]</strong>, or refunds where the item is <strong>not</strong> being returned, need a lead's sign-off first. Note who approved it in the ticket.</span></div>
+        <div class="note warn" style="margin-top:18px"><span class="i">Approval needed</span><span>Refunds over <strong>$[X]</strong>, or refunds where the item is <strong>not</strong> being returned — ask your lead first.</span></div>
       </div>
 
       <div class="grid-2">
@@ -395,9 +395,9 @@ footer b{color:var(--yellow)}
           <ol class="runbook">
             <li><div><div class="step-title">Open the order</div><div class="step-body">Find it by order # or email and confirm payment status is <span class="tag">Paid</span>.</div></div></li>
             <li><div><div class="step-title">Click Refund</div><div class="step-body">Top-right of the order → <span class="tag">Refund</span>.</div></div></li>
-            <li><div><div class="step-title">Choose amount</div><div class="step-body">Full or partial. For partials, enter the line-item qty or a custom amount. Shipping refunds are a separate field.</div></div></li>
+            <li><div><div class="step-title">Choose amount</div><div class="step-body">Full or partial. For partials, enter the line-item qty or a custom amount. Shipping refunds are a separate flow — ask your lead.</div></div></li>
             <li><div><div class="step-title">Set restock</div><div class="step-body">Toggle <span class="tag">Restock items</span> ON only if the product is coming back to inventory.</div></div></li>
-            <li><div><div class="step-title">Add reason &amp; tag</div><div class="step-body">Internal reason note + tag <span class="tag">refund</span> and reason (e.g. <span class="tag">return</span>, <span class="tag">goodwill</span>).</div></div></li>
+            <li><div><div class="step-title">Add reason &amp; tag</div><div class="step-body">Internal reason note + tag <span class="tag">refund</span> and reason (e.g. <span class="tag">return-received</span>).</div></div></li>
             <li><div><div class="step-title">Submit refund</div><div class="step-body">Refund goes to the original payment method. Typically lands in <strong>[5–10]</strong> business days.</div></div></li>
           </ol>
         </div>
@@ -408,19 +408,19 @@ footer b{color:var(--yellow)}
           <div class="script">
             <button class="copy">Copy</button>
             <div class="who label">Standard refund</div>
-            <p>All set — I've refunded <span class="ph">[amount]</span> to your original payment method. It usually takes <span class="ph">[5–10]</span> business days to show up depending on your bank. You'll get an email confirmation shortly.</p>
+            <p>All set — I've refunded <span class="ph">[amount]</span> to your original payment method. It usually takes <span class="ph">[5–10]</span> business days to show up depending on your bank.</p>
           </div>
 
           <div class="script">
             <button class="copy">Copy</button>
             <div class="who label">Can't fulfill</div>
-            <p>I'm sorry — <span class="ph">[item]</span> is no longer available, so I won't leave you waiting on it. I've issued a full refund of <span class="ph">[amount]</span> back to your card. Again, apologies for the inconvenience.</p>
+            <p>I'm sorry — <span class="ph">[item]</span> is no longer available, so I won't leave you waiting on it. I've issued a full refund of <span class="ph">[amount]</span> back to your original payment method. Thanks for understanding.</p>
           </div>
 
           <div class="script">
             <button class="copy">Copy</button>
             <div class="who label">Partial / goodwill</div>
-            <p>That shouldn't have happened, and I'd like to make it right. I've applied a <span class="ph">[amount]</span> refund to your order for the trouble while you keep the item. You'll see it back on your card within <span class="ph">[5–10]</span> business days.</p>
+            <p>That shouldn't have happened, and I'd like to make it right. I've applied a <span class="ph">[amount]</span> refund to your order for the trouble while you keep the item. You'll see it in your account within [5–10] business days.</p>
           </div>
         </div>
       </div>
@@ -445,7 +445,7 @@ footer b{color:var(--yellow)}
           <div class="cat"><h4>Inconvenience comp</h4><p>Small credit to apologize for a delay or minor issue.</p></div>
           <div class="cat"><h4>Loyalty gesture</h4><p>Thank-you credit for a repeat or impacted customer.</p></div>
         </div>
-        <div class="note tip" style="margin-top:18px"><span class="i">Make it feel good</span><span>If the customer is owed <strong>$[X]</strong>, consider offering store credit of <strong>$[X + a little extra]</strong> so choosing credit is clearly the better deal — not a consolation prize.</span></div>
+        <div class="note tip" style="margin-top:18px"><span class="i">Make it feel good</span><span>If the customer is owed <strong>$[X]</strong>, consider offering store credit of <strong>$[X + bonus]</strong> to tip the scales toward staying with us.</span></div>
       </div>
 
       <div class="grid-2">
@@ -453,12 +453,12 @@ footer b{color:var(--yellow)}
           <p class="panel-label label">Process · In Shopify</p>
           <ol class="runbook">
             <li><div><div class="step-title">Open the customer profile</div><div class="step-body">Customers → search by name/email → open their profile.</div></div></li>
-            <li><div><div class="step-title">Add store credit</div><div class="step-body"><span class="tag">Store credit</span> section → <span class="tag">Add credit</span>. Enter the amount + currency.</div></div></li>
+            <li><div><div class="step-title">Add store credit</div><div class="step-body"><span class="tag">Store credit</span> section → <span class="tag">Add credit</span>. Enter the amount + reason.</div></div></li>
             <li><div><div class="step-title">Note the reason</div><div class="step-body">Add a clear internal reason (e.g. "goodwill — late delivery, order #1234").</div></div></li>
             <li><div><div class="step-title">Confirm expiry rules</div><div class="step-body">Check whether the credit expires per our policy and tell the customer if so.</div></div></li>
             <li><div><div class="step-title">Tag the order</div><div class="step-body">Tag <span class="tag">store-credit</span> + reason so we can track usage.</div></div></li>
           </ol>
-          <div class="note warn" style="margin-top:16px"><span class="i">Heads up</span><span>If our store uses <strong>gift cards</strong> instead of native store credit, generate one under Products → Gift cards and send the code. Confirm which method we use: <strong>[EDIT]</strong>.</span></div>
+          <div class="note warn" style="margin-top:16px"><span class="i">Heads up</span><span>If our store uses <strong>gift cards</strong> instead of native store credit, generate one under Products and send the code directly to the customer.</span></div>
         </div>
 
         <div class="panel">
@@ -467,19 +467,19 @@ footer b{color:var(--yellow)}
           <div class="script">
             <button class="copy">Copy</button>
             <div class="who label">Offering as an option</div>
-            <p>I can refund you, or — if you'd like — I can add <span class="ph">[amount + extra]</span> in store credit to your account so you've got a bit more to spend on the pups next time. Totally your call! Which would you prefer?</p>
+            <p>I can refund you, or — if you'd like — I can add <span class="ph">[amount + extra]</span> in store credit to your account so you've got a bit more to spend on the pups next time. What works best for you?</p>
           </div>
 
           <div class="script">
             <button class="copy">Copy</button>
             <div class="who label">Credit applied</div>
-            <p>Done! I've added <span class="ph">[amount]</span> in store credit to your account. It'll apply automatically at checkout next time you're logged in. <span class="ph">[Mention expiry if any]</span></p>
+            <p>Done! I've added <span class="ph">[amount]</span> in store credit to your account. It'll apply automatically at checkout next time you're logged in. <span class="ph">[Mention expiry if applicable]</span></p>
           </div>
 
           <div class="script">
             <button class="copy">Copy</button>
             <div class="who label">Goodwill gesture</div>
-            <p>Thanks for sticking with us through this. As a small thank-you, I've added <span class="ph">[amount]</span> in store credit to your account for your next order. Hope it makes up for the hassle!</p>
+            <p>Thanks for sticking with us through this. As a small thank-you, I've added <span class="ph">[amount]</span> in store credit to your account for your next order. Hope it makes up for the wait.</p>
           </div>
         </div>
       </div>
