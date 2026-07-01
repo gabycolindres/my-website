@@ -3,561 +3,207 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resolutions Playbook — Wynwood Dog Food Co.</title>
-
-<!--
-=====================================================================
-  WYNWOOD DOG FOOD CO. — RESOLUTIONS PLAYBOOK
-  HOW TO EDIT
-  1. BRAND:   colors live in the ":root" block below. Company name +
-              logo are in the <header>. Search [EDIT].
-  2. FONTS:   uses Cubano (titles/headings) + Inter (body text).
-  3. CONTENT: every section is plain HTML — edit text, steps, scripts
-              directly. Duplicate any block to add more.
-  4. UPDATES: add a new entry at the TOP of the Updates section.
-=====================================================================
--->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cubano&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+<title>Wynwood Dog Food Co. — Retail Associate Playbook</title>
 <style>
-/* ===============  [EDIT] WYNWOOD BRAND TOKENS  =============== */
-:root{
-  /* core */
-  --ink:      #2E2E2E;   /* charcoal — "use for black, never true black" */
-  --cream:    #FDFAE4;   /* vet background — page bg / alt white          */
-  --cream2:   #F5E8A9;   /* light yellow cream                            */
-  --card:     #FFFDF4;   /* warm card surface (never true white)          */
-  --yellow:   #FFD820;   /* MANGO — bold statements + signature           */
-  --line:     #E6DCB8;   /* soft tan border                               */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #FAFAF7;
+    color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
 
-  /* workflow accents — pulled from the flavor palette */
-  --reship:   #63C9DA;   /* Lamb + Egg (cyan)            */
-  --refund:   #F15F59;   /* Beef + Potato (coral)        */
-  --credit:   #54BE90;   /* Venison + Squash (green)     */
+  /* Browser-style chrome */
+  .chrome { background: #2B2B2B; flex-shrink: 0; }
 
-  --font-display:'Cubano', system-ui, sans-serif;         /* Cubano for titles/headings */
-  --font-body:'Inter', system-ui, sans-serif;             /* Inter for body text        */
+  .brandbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 20px 11px;
+  }
+  .paw { font-size: 24px; line-height: 1; }
+  .brand-text .logo-text {
+    color: #F5C842; font-size: 16px; font-weight: 800;
+    letter-spacing: 0.05em; text-transform: uppercase; line-height: 1.1;
+  }
+  .brand-text .logo-sub {
+    color: #9a978f; font-size: 10.5px; font-weight: 600;
+    letter-spacing: 0.11em; text-transform: uppercase; margin-top: 2px;
+  }
 
-  --radius: 16px;
-  --radius-sm: 10px;
-  --sticker: 5px 5px 0 var(--ink);   /* the "stroke / high-impact" effect */
-  --maxw: 1180px;
-}
-/* ============================================================ */
+  /* Tab strip */
+  .tabstrip {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    padding: 0 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabstrip::-webkit-scrollbar { display: none; }
 
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:92px}
-body{
-  font-family:var(--font-body);
-  background:var(--cream);
-  color:var(--ink);
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-}
-h1,h2,h3,h4{font-family:var(--font-display);color:var(--ink);line-height:1.05;font-weight:400}
-a{color:inherit}
+  .tab {
+    padding: 9px 17px 10px;
+    border-radius: 9px 9px 0 0;
+    background: #3a3a37;
+    color: #c9c5bc;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    border: none;
+    transition: background 0.14s, color 0.14s;
+  }
+  .tab:hover { background: #474743; color: #efece4; }
+  .tab.active {
+    background: #FAFAF7;
+    color: #1a1a1a;
+  }
 
-/* inline yellow "bubble" highlight — brand's bubble-background effect */
-.hl{background:var(--yellow);color:var(--ink);padding:.04em .32em;border-radius:.35em;box-decoration-break:clone;-webkit-box-decoration-break:clone;font-weight:700}
-.label{font-family:var(--font-body);font-weight:700;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase}
+  .addtab {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: transparent;
+    color: #c9c5bc;
+    border: 1.5px dashed #575751;
+    font-size: 17px; line-height: 1;
+    cursor: pointer;
+    margin: 0 2px 5px 5px;
+    flex-shrink: 0;
+    transition: all 0.14s;
+  }
+  .addtab:hover { color: #F5C842; border-color: #F5C842; }
 
-/* ----------  TOP BAR  ---------- */
-.topbar{position:sticky;top:0;z-index:50;background:var(--ink);border-bottom:3px solid var(--yellow)}
-.topbar-inner{max-width:var(--maxw);margin:0 auto;padding:13px 28px;display:flex;align-items:center;gap:18px}
-.brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);color:var(--cream);font-size:16px;letter-spacing:.02em;text-transform:uppercase}
-/* [EDIT] swap the bone badge for <img src="logo.png"> if you have a logo file */
-.logo{width:34px;height:34px;border-radius:9px;flex:none;background:var(--yellow);display:flex;align-items:center;justify-content:center}
-.logo svg{width:20px;height:20px;fill:var(--ink)}
-.topnav{margin-left:auto;display:flex;gap:3px}
-.topnav a{font-family:var(--font-body);font-size:13.5px;font-weight:600;color:#cfc8b0;text-decoration:none;padding:8px 13px;border-radius:8px;transition:.15s;white-space:nowrap}
-.topnav a:hover{color:var(--ink);background:var(--yellow)}
-.topnav a.active{color:var(--ink);background:var(--yellow)}
-.menu-btn{display:none;margin-left:auto;background:var(--yellow);border:none;border-radius:9px;padding:7px 12px;font-size:18px;cursor:pointer;color:var(--ink)}
+  /* Add menu */
+  .addwrap { position: relative; flex-shrink: 0; }
+  .addmenu {
+    position: absolute;
+    top: 38px; left: 0;
+    background: #fff;
+    border: 1px solid #e2e0d8;
+    border-radius: 12px;
+    box-shadow: 0 12px 34px rgba(0,0,0,0.16);
+    padding: 8px;
+    width: 230px;
+    z-index: 50;
+    display: none;
+  }
+  .addmenu.open { display: block; }
+  .addmenu .am-title {
+    font-size: 10.5px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: #999; padding: 6px 10px 8px;
+  }
+  .addmenu .am-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 9px 11px; border-radius: 8px; font-size: 13px; color: #555;
+    cursor: default;
+  }
+  .addmenu .am-item .soon {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.05em; color: #b9946a; background: #FBF2E2;
+    padding: 2px 7px; border-radius: 20px;
+  }
+  .addmenu .am-note {
+    font-size: 11.5px; color: #999; line-height: 1.5;
+    padding: 8px 11px 4px; border-top: 1px solid #f0eee7; margin-top: 4px;
+  }
 
-/* ----------  LAYOUT  ---------- */
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
-.shell{display:grid;grid-template-columns:218px 1fr;gap:46px;align-items:start;padding-top:44px;padding-bottom:90px}
+  /* Content frame */
+  .frame-wrap { flex: 1; min-height: 0; background: #FAFAF7; }
+  iframe { width: 100%; height: 100%; border: none; display: block; }
 
-/* side nav */
-.side{position:sticky;top:96px}
-.side-label{color:#9a906c;margin:0 0 12px 12px}
-.side a{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);font-weight:600;font-size:14.5px;padding:10px 12px;border-radius:11px;transition:.15s;border:2px solid transparent}
-.side a .dot{width:11px;height:11px;border-radius:50%;flex:none;background:var(--line);border:2px solid var(--ink)}
-.side a:hover{background:var(--card)}
-.side a.active{background:var(--card);border-color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
-.side a.r .dot{background:var(--reship)} .side a.f .dot{background:var(--refund)} .side a.c .dot{background:var(--credit)} .side a.u .dot{background:var(--yellow)}
-
-/* ----------  HERO  ---------- */
-.hero{margin-bottom:8px}
-.eyebrow{color:#9a906c;margin-bottom:16px}
-.hero h1{font-size:clamp(38px,6vw,68px);line-height:.98;letter-spacing:.01em;text-transform:uppercase;margin-bottom:20px}
-.hero p{font-family:var(--font-body);font-size:17.5px;max-width:58ch;color:var(--ink);font-weight:450}
-.meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-.chip{display:inline-flex;align-items:center;gap:7px;background:var(--card);border:2px solid var(--ink);border-radius:99px;padding:6px 14px;font-size:13px;font-weight:600}
-.chip b{font-weight:800}
-
-/* ----------  POLICY OVERVIEW (signature)  ---------- */
-.router{margin:40px 0 8px}
-.router h2{font-family:var(--font-body);font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-bottom:16px}
-.router-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.route{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:2.5px solid var(--ink);border-radius:var(--radius);transition:.16s;overflow:hidden;box-shadow:var(--sticker)}
-.route:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
-.route .cap{height:9px;flex:none}
-.route .inner{padding:18px 20px 20px}
-.route .a{font-family:var(--font-display);text-transform:uppercase;font-size:23px;color:var(--ink);display:flex;align-items:center;gap:9px;letter-spacing:.01em}
-.route .arrow{margin-left:auto;transition:.16s;font-family:var(--font-body);font-weight:800}
-.route:hover .arrow{transform:translateX(4px)}
-.route .policy{font-size:13px;color:#5c5848;font-weight:500;line-height:1.46;margin-top:10px}
-.route .facts{list-style:none;margin-top:14px;border-top:1.5px dashed var(--line);padding-top:11px}
-.route .facts li{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font-size:12.5px;padding:3.5px 0}
-.route .facts li span{color:#7a7458;font-weight:500}
-.route .facts li b{font-weight:800;text-align:right}
-.route.r .cap{background:var(--reship)} .route.f .cap{background:var(--refund)} .route.c .cap{background:var(--credit)}
-
-.note{display:flex;gap:12px;padding:14px 18px;border-radius:var(--radius-sm);font-size:14px;line-height:1.55;font-weight:500}
-.note .i{flex:none;font-weight:800;font-family:var(--font-body);text-transform:uppercase;font-size:12px;letter-spacing:.05em;padding-top:2px}
-.note.tip{background:var(--cream2);border:2px solid var(--ink)}
-.note.tip .i{color:var(--ink)}
-.note.warn{background:#FDE3E1;border:2px solid var(--refund)}
-.note.warn .i{color:var(--refund)}
-
-/* ----------  WORKFLOW SECTION  ---------- */
-.flow{padding-top:70px;scroll-margin-top:88px}
-.flow-head{display:flex;align-items:center;gap:18px;margin-bottom:6px}
-.flow-num{font-family:var(--font-display);font-size:20px;padding:8px 14px;border-radius:11px;color:var(--ink);flex:none;border:2.5px solid var(--ink);box-shadow:var(--sticker)}
-.flow h2{font-size:clamp(30px,4.4vw,46px);text-transform:uppercase;letter-spacing:.01em}
-.flow-sub{font-family:var(--font-body);font-size:16px;color:#5c5848;margin:8px 0 0;max-width:64ch;font-weight:450}
-.flow.r .flow-num{background:var(--reship)} .flow.f .flow-num{background:var(--refund)} .flow.c .flow-num{background:var(--credit)}
-
-.panel{background:var(--card);border:2.5px solid var(--ink);border-radius:var(--radius);padding:26px 28px;margin-top:20px}
-.panel-label{display:inline-flex;align-items:center;gap:8px;color:var(--ink);padding:5px 11px;border-radius:7px;margin-bottom:18px}
-.flow.r .panel-label{background:var(--reship)} .flow.f .panel-label{background:var(--refund)} .flow.c .panel-label{background:var(--credit)}
-
-/* categories */
-.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:13px}
-.cat{border:2px solid var(--ink);border-radius:var(--radius-sm);padding:14px 15px;background:var(--cream)}
-.cat h4{font-family:var(--font-body);font-weight:800;font-size:14.5px;margin-bottom:4px;text-transform:uppercase;letter-spacing:.01em}
-.cat p{font-size:13px;color:#5c5848;line-height:1.5;font-weight:500}
-
-/* runbook steps */
-.runbook{list-style:none;counter-reset:step}
-.runbook li{display:flex;gap:16px;padding:14px 0;border-bottom:1.5px dashed var(--line)}
-.runbook li:last-child{border-bottom:none;padding-bottom:0}
-.runbook li::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-family:var(--font-display);font-size:14px;color:var(--ink);flex:none;width:30px;padding-top:2px}
-.runbook .step-title{font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:.01em}
-.runbook .step-body{font-size:14px;color:#4f4b3d;margin-top:2px;font-weight:500}
-.tag{display:inline-block;font-family:var(--font-body);font-weight:700;font-size:11px;padding:2px 8px;border-radius:6px;background:var(--cream2);border:1.5px solid var(--ink);color:var(--ink);margin-right:4px}
-
-/* script card */
-.script{position:relative;border-radius:var(--radius-sm);padding:18px 20px;margin-top:14px;border:2px solid var(--ink);background:var(--cream)}
-.script .who{color:#7a7458;margin-bottom:8px}
-.script p{font-size:15px;color:var(--ink);line-height:1.62;font-weight:500;padding-right:62px}
-.script .ph{background:var(--yellow);border-radius:5px;padding:0 6px;font-weight:700}
-.copy{position:absolute;top:14px;right:14px;border:2px solid var(--ink);background:var(--card);border-radius:8px;padding:5px 11px;font-size:11.5px;font-family:var(--font-body);font-weight:700;color:var(--ink);cursor:pointer;transition:.15s}
-.copy:hover{background:var(--yellow)}
-.copy.ok{background:var(--credit)}
-
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-
-/* ----------  UPDATES  ---------- */
-.updates{padding-top:70px;scroll-margin-top:88px}
-.updates h2{font-size:clamp(30px,4.4vw,46px);text-transform:uppercase;margin-bottom:8px}
-.timeline{margin-top:26px;border-left:3px solid var(--ink);padding-left:28px;display:flex;flex-direction:column;gap:28px}
-.log{position:relative}
-.log::before{content:"";position:absolute;left:-37px;top:3px;width:14px;height:14px;border-radius:50%;background:var(--card);border:3px solid var(--ink)}
-.log.new::before{background:var(--yellow)}
-.log .date{font-family:var(--font-body);font-size:12px;color:#8a835f;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
-.log h4{font-family:var(--font-body);font-weight:800;font-size:17px;margin:6px 0 6px;text-transform:uppercase;letter-spacing:.01em}
-.log p{font-size:14.5px;color:#4f4b3d;font-weight:500}
-.badge{display:inline-block;font-family:var(--font-body);font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:6px;margin-left:8px;vertical-align:middle}
-.badge.r{background:var(--reship)} .badge.f{background:var(--refund)} .badge.c{background:var(--credit)}
-
-footer{background:var(--ink);color:var(--cream);text-align:center;padding:30px 24px;font-size:13.5px;font-weight:500}
-footer b{color:var(--yellow)}
-
-/* ----------  RESPONSIVE  ---------- */
-@media (max-width:860px){
-  .shell{grid-template-columns:1fr;gap:0;padding-top:30px}
-  .side,.topnav{display:none}
-  .menu-btn{display:block}
-  .router-grid,.grid-2{grid-template-columns:1fr}
-  .wrap{padding:0 18px}
-  .topbar-inner{padding:12px 18px}
-  .brand{font-size:13px}
-  .script p{padding-right:0}
-  .copy{position:static;display:inline-block;margin-bottom:10px}
-}
-.mobile-nav{display:none;flex-direction:column;gap:2px;padding:8px 18px 16px;background:var(--ink)}
-.mobile-nav.open{display:flex}
-.mobile-nav a{text-decoration:none;color:var(--cream);font-weight:700;padding:10px 12px;border-radius:9px;font-size:15px}
-.mobile-nav a:hover{background:var(--yellow);color:var(--ink)}
-
-@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
-@media print{.topbar,.side,.router,.copy{display:none}.shell{grid-template-columns:1fr;padding-top:10px}.panel,.route{box-shadow:none}}
-
-.reveal{opacity:0;transform:translateY(14px)}
-.reveal.in{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+  @media (max-width: 560px) {
+    .brand-text .logo-sub { display: none; }
+    .tab { padding: 8px 13px 9px; font-size: 12.5px; }
+  }
 </style>
 </head>
 <body>
-
-<!-- ============  TOP BAR  ============ -->
-<div class="topbar">
-  <div class="topbar-inner">
-    <!-- [EDIT] company name + logo -->
-    <div class="brand">
-      <span class="logo" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M5.2 8.6c-1.2 0-2.2 1-2.2 2.2 0 .66.29 1.25.75 1.65-.46.4-.75.99-.75 1.65 0 1.21 1 2.2 2.2 2.2 1 0 1.85-.67 2.12-1.58h7.36c.27.91 1.12 1.58 2.12 1.58 1.2 0 2.2-1 2.2-2.2 0-.66-.29-1.25-.75-1.65.46-.4.75-.99.75-1.65 0-1.21-1-2.2-2.2-2.2-1 0-1.85.67-2.12 1.58H7.32c-.27-.91-1.12-1.58-2.12-1.58Z"></path></svg>
-      </span>
-      Wynwood Dog Food Co.
+  <div class="chrome">
+    <div class="brandbar">
+      <span class="paw">🐾</span>
+      <div class="brand-text">
+        <div class="logo-text">Wynwood Dog Food Co.</div>
+        <div class="logo-sub">Retail Associate Playbook</div>
+      </div>
     </div>
-    <nav class="topnav">
-      <a href="#reships">Reships</a>
-      <a href="#refunds">Refunds</a>
-      <a href="#credits">Store Credits</a>
-      <a href="#updates">Updates</a>
-    </nav>
-    <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('mnav').classList.toggle('open')">☰</button>
+    <div class="tabstrip" id="tabstrip"></div>
   </div>
-  <div class="mobile-nav" id="mnav">
-    <a href="#reships" onclick="this.parentElement.classList.remove('open')">Reships</a>
-    <a href="#refunds" onclick="this.parentElement.classList.remove('open')">Refunds</a>
-    <a href="#credits" onclick="this.parentElement.classList.remove('open')">Store Credits</a>
-    <a href="#updates" onclick="this.parentElement.classList.remove('open')">Updates</a>
+
+  <div class="frame-wrap">
+    <iframe id="frame" title="Playbook content" src="home.html"></iframe>
   </div>
-</div>
-
-<div class="wrap">
-<div class="shell">
-
-  <!-- ============  SIDE NAV  ============ -->
-  <aside class="side">
-    <p class="side-label label">Workflows</p>
-    <a href="#reships" class="r" data-target="reships"><span class="dot"></span> Reships</a>
-    <a href="#refunds" class="f" data-target="refunds"><span class="dot"></span> Refunds</a>
-    <a href="#credits" class="c" data-target="credits"><span class="dot"></span> Store Credits</a>
-    <a href="#updates" class="u" data-target="updates"><span class="dot"></span> Updates &amp; Changes</a>
-  </aside>
-
-  <!-- ============  MAIN  ============ -->
-  <main>
-
-    <!-- HERO -->
-    <section class="hero reveal">
-      <p class="eyebrow label">Customer Resolutions · Internal reference</p>
-      <h1>The <span class="hl">Resolutions</span> Playbook</h1>
-      <p>Keeps every resolution consistent, fair, and unmistakably Wynwood. Use it to decide the right fix, run it correctly in Shopify, and say the right thing to the customer — so every agent shows up with the same voice and judgment.</p>
-    </section>
-
-    <!-- POLICY AT A GLANCE -->
-    <section class="router reveal">
-      <h2>Policy at a glance</h2>
-      <div class="router-grid">
-
-        <a href="#reships" class="route r">
-          <div class="cap"></div>
-          <div class="inner">
-            <div class="a"><span>Reships</span> <span class="arrow">→</span></div>
-            <p class="policy">We send a free replacement when an order never arrives, arrives wrong, or arrives unusable — the customer keeps the original.</p>
-            <ul class="facts">
-              <li><span>Customer gets</span><b>Free replacement</b></li>
-              <li><span>Trigger</span><b>Lost / wrong / damaged</b></li>
-              <li><span>Approval</span><b>None*</b></li>
-            </ul>
-          </div>
-        </a>
-
-        <a href="#refunds" class="route f">
-          <div class="cap"></div>
-          <div class="inner">
-            <div class="a"><span>Refunds</span> <span class="arrow">→</span></div>
-            <p class="policy">Money back to the original payment method when the customer doesn't want a replacement, we can't fulfill, or as goodwill.</p>
-            <ul class="facts">
-              <li><span>Customer gets</span><b>Money back</b></li>
-              <li><span>Return window</span><b>[X] days</b></li>
-              <li><span>Approval</span><b>Over $[X]</b></li>
-            </ul>
-          </div>
-        </a>
-
-        <a href="#credits" class="route c">
-          <div class="cap"></div>
-          <div class="inner">
-            <div class="a"><span>Store Credit</span> <span class="arrow">→</span></div>
-            <p class="policy">Credit toward a future order — best when the customer is staying with us. Offer it as a generous gesture, never to dodge a refund we owe.</p>
-            <ul class="facts">
-              <li><span>Customer gets</span><b>Credit for next order</b></li>
-              <li><span>When</span><b>Flexible / goodwill</b></li>
-              <li><span>Approval</span><b>None</b></li>
-            </ul>
-          </div>
-        </a>
-
-      </div>
-      <div class="note tip" style="margin-top:20px"><span class="i">Rule of thumb</span><span>Default to the resolution the customer asks for. When it's our error, lead with a reship or full refund. When in doubt, ask your lead before committing to anything.</span></div>
-    </section>
-
-
-    <!-- ===================================================== -->
-    <!-- ====================  RESHIPS  ====================== -->
-    <!-- ===================================================== -->
-    <section id="reships" class="flow r reveal">
-      <div class="flow-head">
-        <span class="flow-num">01</span>
-        <h2>Reships</h2>
-      </div>
-      <p class="flow-sub">Sending a replacement at no charge so the customer ends up with what they ordered. Used when the product never arrived, arrived wrong, or arrived unusable.</p>
-
-      <!-- categories -->
-      <div class="panel">
-        <p class="panel-label label">When it qualifies</p>
-        <div class="cats">
-          <div class="cat"><h4>Lost in transit</h4><p>No tracking movement for <strong>[X] business days</strong>, or carrier marks it lost.</p></div>
-          <div class="cat"><h4>Damaged on arrival</h4><p>Product unusable due to shipping damage. Photo required.</p></div>
-          <div class="cat"><h4>Wrong item</h4><p>Customer received a different item/variant than ordered.</p></div>
-          <div class="cat"><h4>Missing item</h4><p>Part of a multi-item order didn't arrive.</p></div>
-          <div class="cat"><h4>Defective / quality</h4><p>Manufacturing fault confirmed by photo or description.</p></div>
-        </div>
-        <div class="note warn" style="margin-top:18px"><span class="i">Don't reship if</span><span>Tracking shows <strong>delivered</strong> and it's within the wait window — follow the "marked delivered but not arrived" exception on the Refunds page instead.</span></div>
-      </div>
-
-      <div class="grid-2">
-        <!-- process / shopify -->
-        <div class="panel">
-          <p class="panel-label label">Process · In Shopify</p>
-          <ol class="runbook">
-            <li><div><div class="step-title">Confirm the issue</div><div class="step-body">Check tracking + ask for a photo if damage/defect/wrong item. Save photos to the ticket.</div></div></li>
-            <li><div><div class="step-title">Verify the shipping address</div><div class="step-body">Open the original order → confirm the address is correct before resending.</div></div></li>
-            <li><div><div class="step-title">Duplicate the order</div><div class="step-body"><span class="tag">More actions</span> → <span class="tag">Duplicate</span>. Remove anything not being reshipped (e.g. keep only the damaged item).</div></div></li>
-            <li><div><div class="step-title">Set price to $0</div><div class="step-body">Mark as <span class="tag">Paid</span> outside Shopify or apply a 100% discount so the customer isn't charged.</div></div></li>
-            <li><div><div class="step-title">Tag &amp; note</div><div class="step-body">Add tag <span class="tag">reship</span> + reason tag (e.g. <span class="tag">damaged</span>). Note the original order # in the internal note.</div></div></li>
-            <li><div><div class="step-title">Fulfill &amp; send tracking</div><div class="step-body">Fulfill the new order and share the new tracking link with the customer.</div></div></li>
-          </ol>
-        </div>
-
-        <!-- what to say -->
-        <div class="panel">
-          <p class="panel-label label">What to say</p>
-
-          <div class="script">
-            <button class="copy">Copy</button>
-            <div class="who label">Damaged / defective</div>
-            <p>Oh no — that's not the experience we want for you or your pup. I've sent a replacement <span class="ph">[item]</span> out to you at no charge, no need to return the damaged one. It'll arrive by <span class="ph">[date]</span>. Tracking: [link]</p>
-          </div>
-
-          <div class="script">
-            <button class="copy">Copy</button>
-            <div class="who label">Lost in transit</div>
-            <p>Thanks for your patience — looks like this one got stuck with the carrier. Rather than keep you waiting, I've shipped a fresh <span class="ph">[item]</span> out today at no cost. You should see it by <span class="ph">[date]</span>. Tracking: [link]</p>
-          </div>
-
-          <div class="script">
-            <button class="copy">Copy</button>
-            <div class="who label">Wrong / missing item</div>
-            <p>Apologies for the mix-up! You should've received <span class="ph">[item]</span>. I'm sending the correct one now at no charge — please keep what you received. Tracking: <span class="ph">[link]</span> — delivery by <span class="ph">[date]</span>.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ===================================================== -->
-    <!-- ====================  REFUNDS  ====================== -->
-    <!-- ===================================================== -->
-    <section id="refunds" class="flow f reveal">
-      <div class="flow-head">
-        <span class="flow-num">02</span>
-        <h2>Refunds</h2>
-      </div>
-      <p class="flow-sub">Returning money to the customer's original payment method. Used when the customer doesn't want a replacement, when we can't fulfill, or as goodwill for a service failure.</p>
-
-      <div class="panel">
-        <p class="panel-label label">When it qualifies</p>
-        <div class="cats">
-          <div class="cat"><h4>Cancelled pre-fulfillment</h4><p>Order hasn't shipped and customer cancels. Full refund.</p></div>
-          <div class="cat"><h4>Return received</h4><p>Item returned &amp; inspected within the <strong>[X]-day</strong> window.</p></div>
-          <div class="cat"><h4>Can't fulfill</h4><p>Out of stock / discontinued with no replacement.</p></div>
-          <div class="cat"><h4>Duplicate charge</h4><p>Customer charged twice for one order.</p></div>
-          <div class="cat"><h4>Goodwill / partial</h4><p>Service failure where a partial refund is the fair fix.</p></div>
-        </div>
-        <div class="note warn" style="margin-top:18px"><span class="i">Approval needed</span><span>Refunds over <strong>$[X]</strong>, or refunds where the item is <strong>not</strong> being returned — ask your lead first.</span></div>
-      </div>
-
-      <div class="grid-2">
-        <div class="panel">
-          <p class="panel-label label">Process · In Shopify</p>
-          <ol class="runbook">
-            <li><div><div class="step-title">Open the order</div><div class="step-body">Find it by order # or email and confirm payment status is <span class="tag">Paid</span>.</div></div></li>
-            <li><div><div class="step-title">Click Refund</div><div class="step-body">Top-right of the order → <span class="tag">Refund</span>.</div></div></li>
-            <li><div><div class="step-title">Choose amount</div><div class="step-body">Full or partial. For partials, enter the line-item qty or a custom amount. Shipping refunds are a separate flow — ask your lead.</div></div></li>
-            <li><div><div class="step-title">Set restock</div><div class="step-body">Toggle <span class="tag">Restock items</span> ON only if the product is coming back to inventory.</div></div></li>
-            <li><div><div class="step-title">Add reason &amp; tag</div><div class="step-body">Internal reason note + tag <span class="tag">refund</span> and reason (e.g. <span class="tag">return-received</span>).</div></div></li>
-            <li><div><div class="step-title">Submit refund</div><div class="step-body">Refund goes to the original payment method. Typically lands in <strong>[5–10]</strong> business days.</div></div></li>
-          </ol>
-        </div>
-
-        <div class="panel">
-          <p class="panel-label label">What to say</p>
-
-          <div class="script">
-            <button class="copy">Copy</button>
-            <div class="who label">Standard refund</div>
-            <p>All set — I've refunded <span class="ph">[amount]</span> to your original payment method. It usually takes <span class="ph">[5–10]</span> business days to show up depending on your bank.</p>
-          </div>
-
-          <div class="script">
-            <button class="copy">Copy</button>
-            <div class="who label">Can't fulfill</div>
-            <p>I'm sorry — <span class="ph">[item]</span> is no longer available, so I won't leave you waiting on it. I've issued a full refund of <span class="ph">[amount]</span> back to your original payment method. Thanks for understanding.</p>
-          </div>
-
-          <div class="script">
-            <button class="copy">Copy</button>
-            <div class="who label">Partial / goodwill</div>
-            <p>That shouldn't have happened, and I'd like to make it right. I've applied a <span class="ph">[amount]</span> refund to your order for the trouble while you keep the item. You'll see it in your account within [5–10] business days.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ===================================================== -->
-    <!-- =================  STORE CREDITS  =================== -->
-    <!-- ===================================================== -->
-    <section id="credits" class="flow c reveal">
-      <div class="flow-head">
-        <span class="flow-num">03</span>
-        <h2>Store Credits</h2>
-      </div>
-      <p class="flow-sub">Credit toward a future purchase instead of cash back. Best when the customer is staying with us — use it as a generous gesture, never as a way to avoid a refund we owe.</p>
-
-      <div class="panel">
-        <p class="panel-label label">When it qualifies</p>
-        <div class="cats">
-          <div class="cat"><h4>Customer prefers credit</h4><p>They'd rather reorder than wait for a card refund.</p></div>
-          <div class="cat"><h4>Outside refund window</h4><p>Past the return window but a goodwill gesture is warranted.</p></div>
-          <div class="cat"><h4>Inconvenience comp</h4><p>Small credit to apologize for a delay or minor issue.</p></div>
-          <div class="cat"><h4>Loyalty gesture</h4><p>Thank-you credit for a repeat or impacted customer.</p></div>
-        </div>
-        <div class="note tip" style="margin-top:18px"><span class="i">Make it feel good</span><span>If the customer is owed <strong>$[X]</strong>, consider offering store credit of <strong>$[X + bonus]</strong> to tip the scales toward staying with us.</span></div>
-      </div>
-
-      <div class="grid-2">
-        <div class="panel">
-          <p class="panel-label label">Process · In Shopify</p>
-          <ol class="runbook">
-            <li><div><div class="step-title">Open the customer profile</div><div class="step-body">Customers → search by name/email → open their profile.</div></div></li>
-            <li><div><div class="step-title">Add store credit</div><div class="step-body"><span class="tag">Store credit</span> section → <span class="tag">Add credit</span>. Enter the amount + reason.</div></div></li>
-            <li><div><div class="step-title">Note the reason</div><div class="step-body">Add a clear internal reason (e.g. "goodwill — late delivery, order #1234").</div></div></li>
-            <li><div><div class="step-title">Confirm expiry rules</div><div class="step-body">Check whether the credit expires per our policy and tell the customer if so.</div></div></li>
-            <li><div><div class="step-title">Tag the order</div><div class="step-body">Tag <span class="tag">store-credit</span> + reason so we can track usage.</div></div></li>
-          </ol>
-          <div class="note warn" style="margin-top:16px"><span class="i">Heads up</span><span>If our store uses <strong>gift cards</strong> instead of native store credit, generate one under Products and send the code directly to the customer.</span></div>
-        </div>
-
-        <div class="panel">
-          <p class="panel-label label">What to say</p>
-
-          <div class="script">
-            <button class="copy">Copy</button>
-            <div class="who label">Offering as an option</div>
-            <p>I can refund you, or — if you'd like — I can add <span class="ph">[amount + extra]</span> in store credit to your account so you've got a bit more to spend on the pups next time. What works best for you?</p>
-          </div>
-
-          <div class="script">
-            <button class="copy">Copy</button>
-            <div class="who label">Credit applied</div>
-            <p>Done! I've added <span class="ph">[amount]</span> in store credit to your account. It'll apply automatically at checkout next time you're logged in. <span class="ph">[Mention expiry if applicable]</span></p>
-          </div>
-
-          <div class="script">
-            <button class="copy">Copy</button>
-            <div class="who label">Goodwill gesture</div>
-            <p>Thanks for sticking with us through this. As a small thank-you, I've added <span class="ph">[amount]</span> in store credit to your account for your next order. Hope it makes up for the wait.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ===================================================== -->
-    <!-- ===================  UPDATES  ======================= -->
-    <!-- ===================================================== -->
-    <section id="updates" class="updates reveal">
-      <h2>Updates &amp; Changes</h2>
-      <p class="flow-sub">Whenever a process changes, add a dated entry at the top so everyone sees what's new. Keep the most recent at the top.</p>
-
-      <div class="timeline">
-        <!-- [EDIT] newest entry goes here -->
-        <div class="log new">
-          <div class="date">[EDIT — Month DD, YYYY] · newest</div>
-          <h4>New reship photo requirement <span class="badge r">Reships</span></h4>
-          <p>Damage and defect reships now require a photo saved to the ticket before sending. This protects us on carrier claims. Lost-in-transit reships are unaffected.</p>
-        </div>
-
-        <div class="log">
-          <div class="date">[EDIT — date]</div>
-          <h4>Refund approval threshold raised <span class="badge f">Refunds</span></h4>
-          <p>Agents can now approve refunds up to <strong>$[X]</strong> without a lead. Above that, or for no-return refunds, still get sign-off and note who approved.</p>
-        </div>
-
-        <div class="log">
-          <div class="date">[EDIT — date]</div>
-          <h4>Store credit "+extra" guidance <span class="badge c">Store Credits</span></h4>
-          <p>When offering credit in place of a refund, add a small bonus so it's clearly the better option for the customer. See the Store Credits section for the rule.</p>
-        </div>
-      </div>
-    </section>
-
-  </main>
-</div>
-</div>
-
-<footer>
-  Internal use only · <b>Wynwood Dog Food Co.</b> Resolutions Playbook · Keep this doc current — ping <b>[owner]</b> with corrections.
-</footer>
 
 <script>
-// copy-to-clipboard for script cards
-document.querySelectorAll('.copy').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    var p = btn.parentElement.querySelector('p');
-    var text = p ? p.innerText : '';
-    navigator.clipboard.writeText(text).then(function(){
-      var old = btn.textContent;
-      btn.textContent = '✓ Copied';
-      btn.classList.add('ok');
-      setTimeout(function(){ btn.textContent = old; btn.classList.remove('ok'); },1400);
+  const TABS = [
+    { id: "home",     label: "Home",              file: "home.html" },
+    { id: "policies", label: "Workplace Policies", file: "policies.html" },
+    { id: "refunds",  label: "Refund & Reship",   file: "refunds.html" },
+    { id: "diet",     label: "Diet Finder",       file: "diet-finder.html" },
+  ];
+
+  const FUTURE = ["Onboarding", "Opening & Closing", "POS & Register", "Feeding Guide"];
+
+  let active = "home";
+  const strip = document.getElementById("tabstrip");
+  const frame = document.getElementById("frame");
+
+  function render() {
+    strip.innerHTML = "";
+    TABS.forEach(t => {
+      const b = document.createElement("button");
+      b.className = "tab" + (t.id === active ? " active" : "");
+      b.textContent = t.label;
+      b.onclick = () => go(t.id);
+      strip.appendChild(b);
     });
-  });
-});
 
-// active nav highlight on scroll
-var sections = ['reships','refunds','credits','updates'];
-var navLinks = document.querySelectorAll('.side a, .topnav a');
-function setActive(id){
-  navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#'+id); });
-}
-if('IntersectionObserver' in window){
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting) setActive(e.target.id); });
-  },{rootMargin:'-45% 0px -50% 0px'});
-  sections.forEach(function(id){ var el=document.getElementById(id); if(el) obs.observe(el); });
-}
+    const wrap = document.createElement("div");
+    wrap.className = "addwrap";
+    const add = document.createElement("button");
+    add.className = "addtab";
+    add.textContent = "+";
+    add.title = "Add a chapter";
+    add.onclick = (e) => { e.stopPropagation(); toggleMenu(); };
+    wrap.appendChild(add);
 
-// gentle reveal on scroll
-if('IntersectionObserver' in window){
-  var rObs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); rObs.unobserve(e.target); } });
-  },{rootMargin:'0px 0px -8% 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el){ rObs.observe(el); });
-} else {
-  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
-}
+    const menu = document.createElement("div");
+    menu.className = "addmenu";
+    menu.id = "addmenu";
+    menu.innerHTML =
+      '<div class="am-title">Add a chapter</div>' +
+      FUTURE.map(f => '<div class="am-item">' + f + '<span class="soon">Soon</span></div>').join("") +
+      '<div class="am-note">More chapters can be dropped in as their own file — the playbook grows with the store.</div>';
+    wrap.appendChild(menu);
+    strip.appendChild(wrap);
+  }
+
+  function go(id) {
+    const t = TABS.find(x => x.id === id);
+    if (!t) return;
+    active = id;
+    frame.src = t.file;
+    closeMenu();
+    render();
+  }
+  window.go = go;
+
+  function toggleMenu() {
+    const m = document.getElementById("addmenu");
+    m.classList.toggle("open");
+  }
+  function closeMenu() {
+    const m = document.getElementById("addmenu");
+    if (m) m.classList.remove("open");
+  }
+  document.addEventListener("click", closeMenu);
+
+  render();
 </script>
 </body>
 </html>
